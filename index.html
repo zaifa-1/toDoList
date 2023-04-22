@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toDoList</title>
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <div class="header-left">
+            <img class="logo" src="../assets/todo-logo.png" alt="logo">
+            <h1>todo list</h1>
+        </div>
+        <div class="header-right">
+            <h2>hey, NAME</h2>
+        </div>
+    </div>
+
+
+
+    <main class="main-body">
+
+
+        <div class="left">
+            <h2>Projects</h2>
+            <ul class="projects-list">
+                <li class=" project">
+                    Complete Assignment 
+                    <img class="delete-project" src="../assets/delete-transparent.svg" alt="">
+                </li>
+                <li class="project">Buy Grocery
+                    <img class="delete-project" src="../assets/delete-transparent.svg" alt="">
+                </li>
+                <li class="project">Buy Medicine
+                    <img class="delete-project" src="../assets/delete-transparent.svg" alt="">
+                </li>
+                <li class="project">Pay Tuition
+                    <img class="delete-project" src="../assets/delete-transparent.svg" alt="">
+                </li>
+                <li class="project">Collect rent
+                    <img class="delete-project" src="../assets/delete-transparent.svg" alt="">
+                </li>
+                <li class="project">Fix car
+                    <img class="delete-project" src="../assets/delete-transparent.svg" alt="">
+                </li>
+            </ul>
+            <div class="new-project">
+                    <input type="text" name="new-project" id="project-name" placeholder="NAME">
+                    <div class="new-project-buttons">
+                        <button id="add-project" type="button">Add</button>
+                        <button id="cancel-entry" type="button">cancel</button>
+                    </div>
+            </div>
+            <button class="show-new-project-container">new Project</button>
+        </div>
+
+
+
+
+        <div class="right">
+                <div class="new-task">
+                    <h2>New Task</h2>
+                    <form action="">
+                        <div class="task-title">
+                            <label for="Title">Title</label>
+                            <input class="todo-title" type="text" name="Title" required>
+                        </div>
+
+                        <div class="task-description">
+                            <label for="description">Description</label>
+                            <textarea class="todo-description" name="description" id="" cols="40" rows="8" required></textarea>
+                        </div>
+
+                        <div class="task-date">
+                            <label for="date">Due Date</label>
+                            <input class="todo-date" type="date" name="date" id="date" required>
+                        </div>
+                        <h3>Priority</h3>
+                        <div class="task-priority">
+                            <input type="radio" name="priority" id="Red" value="red">
+                            <label class="radio" for="Red">Red</label>
+                            <input type="radio" name="priority" id="Yellow" value="yellow">
+                            <label class="radio" for="Yellow">Yellow</label>
+                            <input type="radio" name="priority" id="Green" value="green">
+                            <label class="radio" for="Green">Green</label>
+                            <input type="radio" name="priority" id="auto" value="auto">
+                            <label class="radio" for="auto">Auto</label>
+                        </div>
+                        <div class="task-submit">
+                            <input class="submit-btn" type="submit">
+                        </div>
+                    </form>
+                </div>
+
+
+
+                <div class="todo-container">
+                    <div class="todo green">
+                        <p>todo title</p>
+                        <div class="right-elements">
+                            <button>Details</button>
+                            <div class="date-shown" id="selected-date">dd/mm/yyyy</div>
+                            <img class="delete-todo" src="../assets/delete.svg" alt="delete">
+                        </div>
+                    </div>
+                </div>
+                <div class="add-task-btn-container">
+                    <button class="add-task-btn"></button>
+                </div>
+        </div>
+
+
+
+        <div class="overlay"></div>
+        <div class="details-container">
+            <h2></h2>
+            <p></p>
+        </div>
+    </main>
+</body>
+</html>
