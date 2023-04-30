@@ -85,13 +85,10 @@ export class Projects{ //manage all the projects, the elements on the left side
                 if(!(storageUnit['Today'].some(item => item.title === todo[i].title))){
                     if(a === b){
                         storageUnit['Today'].push(todo[i]);
-                        // console.log('added')
                     }
                 }
             }
         }
-        // this.clickedToday.bind(this)
-        // console.log(storageUnit['Today']);
     }
 
     handleProjectClick(e){
@@ -125,7 +122,6 @@ export class Projects{ //manage all the projects, the elements on the left side
 
         selectedProject= storageUnit[this.input.value];
         this.projectName.textContent= this.input.value;
-        // console.log(selectedProject)
         
         this.todoElements.clearAllTodo()
         this.hide_NewProjectContainer();
@@ -199,40 +195,29 @@ export class TodoCard {  //make a card that has some info in it
         let deletableTodo= document.querySelectorAll('.todo-container')
         deletableTodo.forEach(card => {
             card.remove()
-            // console.log('working conditions')
         })
     }
 
     loadNewTodo(){
         for(let i in selectedProject){
             selectedProject[i].makeTodoCard()
-            // console.log(selectedProject[i])
         }
     }
 
     deleteSelectedTodo(e){
         const selectedTodo = e.target.parentNode.parentNode.parentNode; // first parent-node is the 'right-elements' container, then todo, then todoContainer
         const todoContainer = selectedTodo.parentNode; // get the parent of selectedTodo (the whole right container)
-        // console.log(selectedTodo)
-        // console.log(selectedProject)
+
+        todoContainer.removeChild(selectedTodo); // remove the selected card
 
         for(let box in storageUnit){
             const todo= storageUnit[box];
             for(let i=0; i<todo.length; i++){
                 if(todo[i].title === this.todoTitle.textContent ){
-                    todo[i].splice(i, 1)
+                    todo.splice(i, 1);
                 }
             }
         }
-        
-        for (let i = 0; i < selectedProject.length; i++) {
-            if (selectedProject[i].title === this.todoTitle.textContent) {
-              selectedProject.splice(i, 1);
-              todoContainer.removeChild(selectedTodo);
-            //   console.log(selectedProject)
-              break;
-            }
-          }
         saveToLocalStorage= JSON.stringify(storageUnit);
         localStorage.setItem("savedData", saveToLocalStorage);
         console.log(getFromLocalStorage);
@@ -285,8 +270,6 @@ export class TodoCard {  //make a card that has some info in it
             const startDate = new Date();
             const endDate =  new Date(this.date);
             const daysDifference = differenceInDays(endDate, startDate);
-
-            // console.log(daysDifference)
 
             if(daysDifference < 8){
                 this.todo.classList.add('red');
@@ -366,23 +349,9 @@ export class ManageTasks{ // deal with all the deployment of the todo cards and 
         storageUnit[this.projectName.textContent].push(this.todoDeployment);
         this.todoDeployment.makeTodoCard();
         
-        // console.log(this.selectedPriority.value);
-        
         this.projects.manageTodaysTasks();
-        // console.log(storageUnit['Today']);
-        
-        saveToLocalStorage= JSON.stringify(storageUnit);
+
         localStorage.setItem("savedData", saveToLocalStorage);
-        console.log(getFromLocalStorage);
-
-        // getFromLocalStorage= JSON.parse(localStorage.getItem("savedData"));
-        
-        
-
-        // console.log(convertToReadableForm.Today[0].title);
-
-        // onPageLoad()
-
 
         this.overlay.removeOverlay();
         this.resetInputs();
