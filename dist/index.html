@@ -4,18 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <title>toDoList</title>
     <script src="main.js" defer></script>
 </head>
 <body>
     <div class="header">
-        <div class="header-left">
             <img class="logo" src="../assets/todo-logo.png" alt="logo">
             <h1>todo list</h1>
-        </div>
-        <div class="header-right">
-            <h2>hey, NAME</h2>
-        </div>
     </div>
 
 
@@ -24,27 +20,12 @@
 
 
         <div class="left">
-            <h2>Projects</h2>
+
+            
             <ul class="projects-list">
-                <li class=" project">
-                    Complete Assignment 
-                    <img class="delete-project" src="../assets/delete-transparent.svg" alt="">
-                </li>
-                <li class="project">Buy Grocery
-                    <img class="delete-project" src="../assets/delete-transparent.svg" alt="">
-                </li>
-                <li class="project">Buy Medicine
-                    <img class="delete-project" src="../assets/delete-transparent.svg" alt="">
-                </li>
-                <li class="project">Pay Tuition
-                    <img class="delete-project" src="../assets/delete-transparent.svg" alt="">
-                </li>
-                <li class="project">Collect rent
-                    <img class="delete-project" src="../assets/delete-transparent.svg" alt="">
-                </li>
-                <li class="project">Fix car
-                    <img class="delete-project" src="../assets/delete-transparent.svg" alt="">
-                </li>
+                <li class="project today">Today</li>
+                <p class="project-heading">Projects</p>
+                
             </ul>
             <div class="new-project">
                     <input type="text" name="new-project" id="project-name" placeholder="NAME">
@@ -60,6 +41,8 @@
 
 
         <div class="right">
+            <p class="project-name"></p>
+
                 <div class="new-task">
                     <h2>New Task</h2>
                     <form action="">
@@ -88,36 +71,30 @@
                             <input type="radio" name="priority" id="auto" value="auto">
                             <label class="radio" for="auto">Auto</label>
                         </div>
+                        <p class="error-content"></p>
                         <div class="task-submit">
                             <input class="submit-btn" type="submit">
                         </div>
                     </form>
                 </div>
 
-
-
-                <div class="todo-container">
-                    <div class="todo green">
-                        <p>todo title</p>
-                        <div class="right-elements">
-                            <button>Details</button>
-                            <div class="date-shown" id="selected-date">dd/mm/yyyy</div>
-                            <img class="delete-todo" src="../assets/delete.svg" alt="delete">
-                        </div>
-                    </div>
+                <div class="footer">
+                    <a href="https://github.com/zaifa-1/toDoList" target="_blank">
+                        <img class="footer-logo" src="https://github.githubassets.com/images/modules/logos_page/Octocat.png" alt="GitHub">
+                    </a>
                 </div>
-                <div class="add-task-btn-container">
-                    <button class="add-task-btn"></button>
-                </div>
-        </div>
-
-
+            </div>
+            <div class="add-task-btn-container">
+                <button class="add-task-btn"></button>
+            </div>
 
         <div class="overlay"></div>
         <div class="details-container">
             <h2></h2>
             <p></p>
         </div>
+
+        
     </main>
 </body>
 </html>

@@ -24,15 +24,13 @@ export class Overlay{  //active and deactivate the overlay
     storageUnit['Today']=[]
 
     let selectedProject; // the project that needs to be modified
-    let saveToLocalStorage; //save the project to local storage (converts object to a string)
-    let getFromLocalStorage; //retrieve data from local storage to initialize the page
-    let convertToReadableForm; //convert it back to an object from string
-
+    let saveToLocalStorage= JSON.stringify(storageUnit);; //save the project to local storage (converts object to a string)
+    let getFromLocalStorage= JSON.parse(localStorage.getItem("savedData"));; //retrieve data from local storage to initialize the page
 
     export function onPageLoad(){
-        console.log(typeof saveToLocalStorage)
-        console.log(typeof getFromLocalStorage)
-        // console.log(typeof convertToReadableForm)
+        if(typeof getFromLocalStorage !== undefined){
+            console.log('empty')
+        }
     }
 export class Projects{ //manage all the projects, the elements on the left side
     
@@ -350,10 +348,9 @@ export class ManageTasks{ // deal with all the deployment of the todo cards and 
         this.projects.manageTodaysTasks();
         // console.log(storageUnit['Today']);
         
-        saveToLocalStorage= JSON.stringify(storageUnit);
         localStorage.setItem("savedData", saveToLocalStorage);
 
-        getFromLocalStorage= localStorage.getItem("savedData");
+        getFromLocalStorage= JSON.parse(localStorage.getItem("savedData"));
         
         
 
