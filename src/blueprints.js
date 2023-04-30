@@ -24,14 +24,10 @@ export class Overlay{  //active and deactivate the overlay
     storageUnit['Today']=[]
 
     let selectedProject; // the project that needs to be modified
-    let saveToLocalStorage= JSON.stringify(storageUnit);; //save the project to local storage (converts object to a string)
+    let saveToLocalStorage= JSON.stringify(storageUnit); //save the project to local storage (converts object to a string)
     let getFromLocalStorage= JSON.parse(localStorage.getItem("savedData"));; //retrieve data from local storage to initialize the page
 
-    export function onPageLoad(){
-        if(typeof getFromLocalStorage !== undefined){
-            console.log('empty')
-        }
-    }
+    
 export class Projects{ //manage all the projects, the elements on the left side
     
     constructor(){
@@ -52,6 +48,20 @@ export class Projects{ //manage all the projects, the elements on the left side
         this.cancelEntry.addEventListener('click', this.hide_NewProjectContainer.bind(this));
         this.addProjectBtn.addEventListener('click', this.addProjectToProjectMenu.bind(this));
         this.today.addEventListener('click', this.handleProjectClick.bind(this));
+    }
+
+    onPageLoad(){
+        console.log(getFromLocalStorage);
+        if(typeof getFromLocalStorage !== undefined){
+            storageUnit= getFromLocalStorage;
+            for(var i in storageUnit){
+                if(i !== 'Today'){
+                    this.createProjectElement(i);
+                }
+            }
+        }
+     
+    
     }
 
     removePreviousTasks(){
@@ -89,7 +99,7 @@ export class Projects{ //manage all the projects, the elements on the left side
         selectedProject= storageUnit[e.target.textContent];
         this.projectName.textContent= e.target.textContent;
         this.todoElements.loadNewTodo();
-        // console.log(selectedProject);
+        console.log(selectedProject);
     }
 
     deleteClickedProject(e){
@@ -97,7 +107,10 @@ export class Projects{ //manage all the projects, the elements on the left side
         const projectName = Item.textContent;
         delete storageUnit[projectName];
         this.listContainer.removeChild(Item);
-        // console.log(storageUnit)
+
+        saveToLocalStorage= JSON.stringify(storageUnit);
+        localStorage.setItem("savedData", saveToLocalStorage);
+        console.log(getFromLocalStorage);
         
     }
 
@@ -108,9 +121,7 @@ export class Projects{ //manage all the projects, the elements on the left side
 
         storageUnit[this.input.value]= storageBox;
         
-        const listItem= this.createProjectElement(this.input.value)
-        
-        this.listContainer.appendChild(listItem);
+        this.createProjectElement(this.input.value)
 
         selectedProject= storageUnit[this.input.value];
         this.projectName.textContent= this.input.value;
@@ -118,6 +129,10 @@ export class Projects{ //manage all the projects, the elements on the left side
         
         this.todoElements.clearAllTodo()
         this.hide_NewProjectContainer();
+
+        saveToLocalStorage= JSON.stringify(storageUnit);
+        localStorage.setItem("savedData", saveToLocalStorage);
+        console.log(getFromLocalStorage);
 
     }
     
@@ -133,9 +148,9 @@ export class Projects{ //manage all the projects, the elements on the left side
         img.alt = 's';
         li.appendChild(img);
 
-        img.addEventListener('click', this.deleteClickedProject.bind(this))
+        img.addEventListener('click', this.deleteClickedProject.bind(this));
         
-        return li;
+        this.listContainer.appendChild(li);
     }
 
     show_NewProjectContainer(){
@@ -154,11 +169,8 @@ export class Projects{ //manage all the projects, the elements on the left side
 
 
 export class TodoCard {  //make a card that has some info in it
-    
-    static NewId= -3;
 
     constructor(title, details, date, priority){
-        this.id = ++ TodoCard.NewId;
         this.title = title;
         this.details = details;
         this.date = date;
@@ -203,6 +215,16 @@ export class TodoCard {  //make a card that has some info in it
         const todoContainer = selectedTodo.parentNode; // get the parent of selectedTodo (the whole right container)
         // console.log(selectedTodo)
         // console.log(selectedProject)
+
+        for(let box in storageUnit){
+            const todo= storageUnit[box];
+            for(let i=0; i<todo.length; i++){
+                if(todo[i].title === this.todoTitle.textContent ){
+                    todo[i].splice(i, 1)
+                }
+            }
+        }
+        
         for (let i = 0; i < selectedProject.length; i++) {
             if (selectedProject[i].title === this.todoTitle.textContent) {
               selectedProject.splice(i, 1);
@@ -211,6 +233,9 @@ export class TodoCard {  //make a card that has some info in it
               break;
             }
           }
+        saveToLocalStorage= JSON.stringify(storageUnit);
+        localStorage.setItem("savedData", saveToLocalStorage);
+        console.log(getFromLocalStorage);
     }
     
     
@@ -244,7 +269,6 @@ export class TodoCard {  //make a card that has some info in it
         this.dateShown.textContent= format(new Date(this.date), 'MM/dd/yyyy')
         
         //selecting the color of the card based on its priority
-
         if(this.priority === 'red'){
             this.todo.classList.add('red');
         }
@@ -343,21 +367,21 @@ export class ManageTasks{ // deal with all the deployment of the todo cards and 
         this.todoDeployment.makeTodoCard();
         
         // console.log(this.selectedPriority.value);
-        // console.log(Object.keys(storageUnit)[this.todoDeployment.id])
         
         this.projects.manageTodaysTasks();
         // console.log(storageUnit['Today']);
         
+        saveToLocalStorage= JSON.stringify(storageUnit);
         localStorage.setItem("savedData", saveToLocalStorage);
+        console.log(getFromLocalStorage);
 
-        getFromLocalStorage= JSON.parse(localStorage.getItem("savedData"));
+        // getFromLocalStorage= JSON.parse(localStorage.getItem("savedData"));
         
         
 
-        // console.log(typeof saveToLocalStorage);
         // console.log(convertToReadableForm.Today[0].title);
 
-        onPageLoad()
+        // onPageLoad()
 
 
         this.overlay.removeOverlay();
