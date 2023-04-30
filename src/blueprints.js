@@ -354,7 +354,8 @@ export class ManageTasks{ // deal with all the deployment of the todo cards and 
         localStorage.setItem("savedData", saveToLocalStorage);
 
         getFromLocalStorage= localStorage.getItem("savedData");
-        convertToReadableForm= JSON.parse(getFromLocalStorage);
+        
+        
 
         // console.log(typeof saveToLocalStorage);
         // console.log(convertToReadableForm.Today[0].title);
