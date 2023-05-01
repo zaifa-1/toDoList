@@ -1,5 +1,5 @@
 import "./style.css"
-import { Projects, Overlay, TodoCard, ManageTasks } from "./blueprints";
+import { Projects, Overlay, TodoCard, ManageTasks, onPageLoad } from "./blueprints";
 
 let newProject= new Projects
 
@@ -9,7 +9,7 @@ const todoCard= new TodoCard
 
 const tasks= new ManageTasks
 
-newProject.onPageLoad()
+onPageLoad()
 
 
 

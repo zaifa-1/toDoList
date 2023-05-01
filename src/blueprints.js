@@ -28,6 +28,22 @@ export class Overlay{  //active and deactivate the overlay
     let getFromLocalStorage= JSON.parse(localStorage.getItem("savedData"));; //retrieve data from local storage to initialize the page
 
     
+    
+    export function onPageLoad(){
+
+        if (getFromLocalStorage) {
+        storageUnit = getFromLocalStorage;
+        const newListItem= new Projects()
+        for(let box in storageUnit){
+            if(box !== 'Today'){
+                newListItem.createProjectElement(box)
+            }
+        }
+        console.log(storageUnit)
+        } 
+    }
+         
+        
 export class Projects{ //manage all the projects, the elements on the left side
     
     constructor(){
@@ -48,20 +64,6 @@ export class Projects{ //manage all the projects, the elements on the left side
         this.cancelEntry.addEventListener('click', this.hide_NewProjectContainer.bind(this));
         this.addProjectBtn.addEventListener('click', this.addProjectToProjectMenu.bind(this));
         this.today.addEventListener('click', this.handleProjectClick.bind(this));
-    }
-
-    onPageLoad(){
-        console.log(getFromLocalStorage);
-        if(typeof getFromLocalStorage !== undefined){
-            storageUnit= getFromLocalStorage;
-            for(var i in storageUnit){
-                if(i !== 'Today'){
-                    this.createProjectElement(i);
-                }
-            }
-        }
-     
-    
     }
 
     removePreviousTasks(){
@@ -96,7 +98,6 @@ export class Projects{ //manage all the projects, the elements on the left side
         selectedProject= storageUnit[e.target.textContent];
         this.projectName.textContent= e.target.textContent;
         this.todoElements.loadNewTodo();
-        console.log(selectedProject);
     }
 
     deleteClickedProject(e){
@@ -107,7 +108,6 @@ export class Projects{ //manage all the projects, the elements on the left side
 
         saveToLocalStorage= JSON.stringify(storageUnit);
         localStorage.setItem("savedData", saveToLocalStorage);
-        console.log(getFromLocalStorage);
         
     }
 
@@ -128,7 +128,7 @@ export class Projects{ //manage all the projects, the elements on the left side
 
         saveToLocalStorage= JSON.stringify(storageUnit);
         localStorage.setItem("savedData", saveToLocalStorage);
-        console.log(getFromLocalStorage);
+
 
     }
     
@@ -218,9 +218,10 @@ export class TodoCard {  //make a card that has some info in it
                 }
             }
         }
+
         saveToLocalStorage= JSON.stringify(storageUnit);
         localStorage.setItem("savedData", saveToLocalStorage);
-        console.log(getFromLocalStorage);
+
     }
     
     
@@ -351,7 +352,9 @@ export class ManageTasks{ // deal with all the deployment of the todo cards and 
         
         this.projects.manageTodaysTasks();
 
+        saveToLocalStorage= JSON.stringify(storageUnit);
         localStorage.setItem("savedData", saveToLocalStorage);
+
 
         this.overlay.removeOverlay();
         this.resetInputs();
