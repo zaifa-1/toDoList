@@ -200,7 +200,9 @@ export class TodoCard {  //make a card that has some info in it
 
     loadNewTodo(){
         for(let i in selectedProject){
-            selectedProject[i].makeTodoCard()
+            const todo = selectedProject[i];
+            const newTodoCard = new TodoCard(todo.title, todo.details, todo.date, todo.priority);
+            newTodoCard.makeTodoCard();
         }
     }
 
@@ -234,6 +236,7 @@ export class TodoCard {  //make a card that has some info in it
         this.rightElements.classList.add('right-elements');
         
         this.detailsBtn.textContent= 'Details';
+        this.detailsBtn.classList.add('details-btn')
         
         this.dateShown.classList.add('date-shown');
         

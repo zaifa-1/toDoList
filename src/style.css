@@ -26,10 +26,7 @@ body{
 .header{
     display: flex;
 
-    height: var(--header-height);
-
     background-color: var(--main-color);
-    color: var(--compliment2);
 
     align-items: center;
 
@@ -39,6 +36,13 @@ body{
 .logo{
     height: 100px;
     margin-top: 10px;
+}
+
+.header h1{
+    color: transparent;
+    background-image: linear-gradient(60deg, var(--compliment), var(--compliment2));
+    -webkit-background-clip: text;
+    background-clip: text;
 }
 
 .main-body{
@@ -118,7 +122,7 @@ body{
 
     appearance: none;
     border: none;
-    background-color: var(--button-color2);
+    background-color: var(--secondary-color);
 
     cursor: pointer;
 
@@ -136,7 +140,7 @@ body{
     top: 50%;
     left: 50%;
 
-    background-color: black;
+    background-color: var(--text-color);
   }
 
   .add-task-btn::before{
@@ -148,7 +152,8 @@ body{
   }
 
   .add-task-btn:hover{
-    background-color: #8ca8be;
+    background-color:#2a2a2a;
+    scale: 1.05;
   }
 
 
@@ -158,15 +163,21 @@ body{
 
 /* New task card */
 .new-task{
-    height: 450px;
     width: 650px;
+
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0);
-    background-color: var(--compliment);
-    color: var(--secondary-color);
+
+    background-color: var(--main-color);
+    color: var(--text-color);
+
     transition: .2s;
+
+    border-radius: 10px;
+
+    /* box-shadow: 5px 3px 25px 0; */
 }
 
 .new-task.active{
@@ -176,6 +187,9 @@ body{
 
 .new-task h2{
     text-align: center;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    margin: 10px 0;
 }
 
 .task-description, .task-title, .task-date{
@@ -196,9 +210,23 @@ textarea{
     margin: 15px 0 0 30px;
 }
 
+
+.todo-title, .todo-description{
+    margin: 5px 0;
+    padding: 7px 5px;
+    border-radius: 5px;
+    background-color: #dcdcdc;
+}
+
+.todo-date{
+    background-color: #dcdcdc;
+}
+
 .task-priority{
     display: flex;
-    justify-content: space-around;
+    gap: 21px;
+    
+    color: #000;
 }
 
 input[type="radio"]{
@@ -212,7 +240,7 @@ input[type="radio"]:checked + .radio{
 .radio{
     cursor: pointer;
     background-color: var(--button-color);
-    margin: 5px 10px 0px 0px;
+    margin: 5px 10px;
     padding: 10px 30px;
     width: 100px;
     text-align: center;
@@ -231,19 +259,25 @@ input[type="radio"]:checked + .radio{
 }
 
 input[type="submit"]{
-    position: absolute;
-    bottom: 5%;
-    left: 50%;
-    transform: translate(-50%);
+    transform: translateX(-50%);
+    margin:10px 0 10px 50%;
+
     appearance: none;
     border: none;
+
     border-radius: 10px;
     padding: 15px 50px;
+
     cursor: pointer;
+
     background: var(--button-color);
+
+    transition: 0.1s;
 }
 
-
+input[type="submit"]:hover{
+    background-color: var(--button-color2);
+}
 
 
 
@@ -251,20 +285,50 @@ input[type="submit"]{
 
 .show-new-project-container{
     margin:1rem 0 ;
+    padding: 10px 15px;
+
+    appearance: none;
+    
+    border: none;
+    border-radius: 20px;
+
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+
+    cursor: pointer;
+
+    transition: 0.15s;
+
 }
 
+.show-new-project-container:hover{
+    background-color: #2a2a2a;
+    scale: 1.1;
+}
+
+
 .new-project{
-    background-color: #e9e3e3;
+    background-color: var(--secondary-color);
     width: 80%;
     color: #315098;
-    border-radius: 5px;
-    padding: 5px;
+    border-radius: 10px;
+    padding: 10px 20px;
     position: absolute;
+    z-index: 10;
     transform: scale(0);
 }
 
 .new-project> input{
     width: 100%;
+
+    margin: 5px 0;
+    padding: 5px 3px;
+
+    border: 1px solid var(--main-color);
+
+    border-radius: 5px;
+
+    background-color: #dcdcdc;
 }
 
 .new-project-buttons{
@@ -276,9 +340,15 @@ input[type="submit"]{
 .new-project-buttons > button{
     appearance: none;
     border: none;
-    background-color: var(--button-color);
-    padding: 3px 8px;
+
+    border-radius: 5px;
+
+    background-color: var(--main-color);
+    color: var(--text-color);
+
+    padding: 5px 8px;
     margin-top: 5px;
+
     cursor: pointer;
 }
 
@@ -317,6 +387,15 @@ input[type="submit"]{
     padding: 5px 40px;
     border-radius: 10px;
 
+}
+
+.details-btn{
+    appearance: none;
+    border: none;
+    background: transparent;
+    font-weight: bold;
+    cursor: pointer;
+    color: inherit;
 }
 
 .red{
@@ -407,9 +486,8 @@ input[type="submit"]{
 }
 
 .footer {
-    height: 50px;
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
     right: 30px;
     margin-top: 50px;
   }

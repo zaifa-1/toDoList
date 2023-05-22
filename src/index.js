@@ -9,7 +9,8 @@ const todoCard= new TodoCard
 
 const tasks= new ManageTasks
 
-onPageLoad()
+window.onload = onPageLoad;
+
 
 
 
