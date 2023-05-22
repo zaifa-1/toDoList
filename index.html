@@ -11,7 +11,7 @@
 <body>
     <div class="header">
             <img class="logo" src="../assets/todo-logo.png" alt="logo">
-            <h1>todo list</h1>
+            <h1>TODO LIST</h1>
     </div>
 
 
@@ -34,49 +34,49 @@
                         <button id="cancel-entry" type="button">cancel</button>
                     </div>
             </div>
-            <button class="show-new-project-container">new Project</button>
+            <button class="show-new-project-container">New Project</button>
         </div>
 
+        
+        <div class="new-task">
+            <h2>New Task</h2>
+            <form action="">
+                <div class="task-title">
+                    <label for="Title">Title</label>
+                    <input class="todo-title" type="text" name="Title" required>
+                </div>
 
+                <div class="task-description">
+                    <label for="description">Description</label>
+                    <textarea class="todo-description" name="description" id="" cols="40" rows="8" required></textarea>
+                </div>
+
+                <div class="task-date">
+                    <label for="date">Due Date</label>
+                    <input class="todo-date" type="date" name="date" id="date" required>
+                </div>
+                <h3>Priority</h3>
+                <div class="task-priority">
+                    <input type="radio" name="priority" id="Red" value="red">
+                    <label class="radio" for="Red">Red</label>
+                    <input type="radio" name="priority" id="Yellow" value="yellow">
+                    <label class="radio" for="Yellow">Yellow</label>
+                    <input type="radio" name="priority" id="Green" value="green">
+                    <label class="radio" for="Green">Green</label>
+                    <input type="radio" name="priority" id="auto" value="auto">
+                    <label class="radio" for="auto">Auto</label>
+                </div>
+                <p class="error-content"></p>
+                <div class="task-submit">
+                    <input class="submit-btn" type="submit">
+                </div>
+            </form>
+        </div>
 
 
         <div class="right">
             <p class="project-name"></p>
 
-                <div class="new-task">
-                    <h2>New Task</h2>
-                    <form action="">
-                        <div class="task-title">
-                            <label for="Title">Title</label>
-                            <input class="todo-title" type="text" name="Title" required>
-                        </div>
-
-                        <div class="task-description">
-                            <label for="description">Description</label>
-                            <textarea class="todo-description" name="description" id="" cols="40" rows="8" required></textarea>
-                        </div>
-
-                        <div class="task-date">
-                            <label for="date">Due Date</label>
-                            <input class="todo-date" type="date" name="date" id="date" required>
-                        </div>
-                        <h3>Priority</h3>
-                        <div class="task-priority">
-                            <input type="radio" name="priority" id="Red" value="red">
-                            <label class="radio" for="Red">Red</label>
-                            <input type="radio" name="priority" id="Yellow" value="yellow">
-                            <label class="radio" for="Yellow">Yellow</label>
-                            <input type="radio" name="priority" id="Green" value="green">
-                            <label class="radio" for="Green">Green</label>
-                            <input type="radio" name="priority" id="auto" value="auto">
-                            <label class="radio" for="auto">Auto</label>
-                        </div>
-                        <p class="error-content"></p>
-                        <div class="task-submit">
-                            <input class="submit-btn" type="submit">
-                        </div>
-                    </form>
-                </div>
 
                 <div class="footer">
                     <a href="https://github.com/zaifa-1/toDoList" target="_blank">
