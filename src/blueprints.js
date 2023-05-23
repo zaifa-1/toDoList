@@ -1,9 +1,9 @@
 import { format, differenceInDays } from 'date-fns';
 import flatpickr from 'flatpickr';
 
-import deleteBtn from '../assets/delete.svg'
-import logo from '../assets/todo-logo.png'
-import xSign from '../assets/x-symbol-svgrepo-com.svg'
+// import deleteBtn from '../assets/delete.svg'
+// import logo from '../assets/todo-logo.png'
+// import xSign from '../assets/x-symbol-svgrepo-com.svg'
 
 
 export class Overlay{  //active and deactivate the overlay

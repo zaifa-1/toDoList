@@ -1,7 +1,7 @@
 import "./style.css"
 import deleteBtn from '../assets/delete.svg'
 import logo from '../assets/todo-logo.png'
-import xSign from '../assets/x-symbol-svgrepo-com.svg'
+import xSign from 'src/assets/x-symbol-svgrepo-com.svg'
 
 
 import { Projects, Overlay, TodoCard, ManageTasks, onPageLoad } from "./blueprints";
