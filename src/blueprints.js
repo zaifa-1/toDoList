@@ -140,7 +140,7 @@ export class Projects{ //manage all the projects, the elements on the left side
         
         const img = document.createElement('img');
         img.classList.add('delete-project');
-        img.src = './assets/x-symbol-svgrepo-com.svg';
+        img.src = '/assets/x-symbol-svgrepo-com.svg';
         img.alt = 'delete project';
         li.appendChild(img);
 
@@ -240,7 +240,7 @@ export class TodoCard {  //make a card that has some info in it
         
         this.dateShown.classList.add('date-shown');
         
-        this.deleteTodo.src= './assets/delete.svg';
+        this.deleteTodo.src= '/assets/delete.svg';
         this.deleteTodo.alt= 'delete button';
         this.deleteTodo.classList.add('delete-todo')
 
