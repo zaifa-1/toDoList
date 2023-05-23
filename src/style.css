@@ -10,7 +10,8 @@
 :root{
     --main-color: #222222;
     --secondary-color: #4D4D4D;
-    --compliment: #f7b500;
+    --compliment: greenyellow;
+    --yellow:#f7b500;
     --compliment2: #007FFF;
     --button-color:#fbd0e0;
     --button-color2:#e4c0be;
@@ -234,7 +235,7 @@ input[type="radio"]{
 }
 
 input[type="radio"]:checked + .radio{
-    background-color: greenyellow;
+    background-color: var(--compliment);
 }
 
 .radio{
