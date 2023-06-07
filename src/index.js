@@ -1,6 +1,6 @@
 import "./style.css"
-import deleteBtn from '../assets/delete.svg'
-import logo from '../assets/todo-logo.png'
+import deleteBtn from './assets/delete.svg'
+import logo from './assets/todo-logo.png'
 import xSign from 'src/assets/x-symbol-svgrepo-com.svg'
 
 
